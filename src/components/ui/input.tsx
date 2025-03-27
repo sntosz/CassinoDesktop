@@ -1,22 +1,75 @@
-import * as React from "react"
+import { cn } from '@/lib/utils'
+import { type ComponentProps, type ReactNode, forwardRef } from 'react'
+import { Label } from './label'
 
-import { cn } from "@/lib/utils"
+export interface InputProps extends ComponentProps<'input'> {
+  iconLeft?: ReactNode
+  iconRight?: ReactNode
+  label?: string
+  required?: boolean
+}
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      className,
+      type,
+
+      iconLeft,
+      iconRight,
+      label,
+      id,
+      required = false,
+      ...props
+    },
+    ref
+  ) => {
     return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-          className
+      <div className="space-y-2">
+        {label && (
+          <Label htmlFor={id}>
+            {label}
+            {required && <span className="text-red-500">{' *'}</span>}
+          </Label>
         )}
-        ref={ref}
-        {...props}
-      />
+
+        <div className="relative w-full">
+          {iconLeft && (
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+              {iconLeft}
+            </span>
+          )}
+
+          <input
+            type={type}
+            id={id}
+            className={cn(
+              `flex h-12 w-full rounded-md border border-gray-500 bg-[#1D1F2C] px-4 py-2 text-base shadow-sm transition-colors 
+              file:py-2 file:px-4 lg:file:px-7 file:cursor-pointer file:rounded-md file:mr-2 file:bg-primary file:h-full file:text-sm file:font-medium file:text-white placeholder:text-slate-300
+              focus:ring-gray-400 pr-10 focus:outline-none focus:ring-2
+              disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100 disabled:border-gray-00 disabled:text-gray-800
+              md:text-sm`,
+              className,
+              iconLeft && 'pl-10',
+              {
+                'border-none shadow-inherit px-0 shadow-none h-auto text-sm lg:text-base':
+                  type === 'file',
+              }
+            )}
+            ref={ref}
+            {...props}
+          />
+
+          {iconRight && (
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
+              {iconRight}
+            </span>
+          )}
+        </div>
+      </div>
     )
   }
 )
-Input.displayName = "Input"
+Input.displayName = 'Input'
 
 export { Input }
