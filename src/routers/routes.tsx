@@ -1,19 +1,17 @@
-import { App }  from "@/App";
 import { Home } from "@/pages/home";
-import React from "react";
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { Routes, Route } from 'react-router'
 
+export const ROUTES = {
+  HOME: '/',
+  ENTRAR: '/entrar',
+  CADASTRAR: '/cadastrar',
+} as const
 
+export type RoutePaths = keyof typeof ROUTES
+export type RoteUrls = (typeof ROUTES)[RoutePaths]
 
-const AppRoutes = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        {/* <Route path="/cadastyro" element={<BrunaTeste />}/> */}
-        <Route path="/" element={<Home />}/>
-      </Routes>
-    </BrowserRouter>
-  );
+export const AppRoutes = () => {
+  <Routes>
+    <Route path={ROUTES.HOME} element={<Home />} />
+  </Routes>
 };
-
-export default AppRoutes;
