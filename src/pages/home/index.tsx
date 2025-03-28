@@ -8,7 +8,7 @@ export function Home(){
             <div>
                 <Heading >Login</Heading>
                 <Input/>
-                
+                aaa
             </div>
 
         </Auth>
