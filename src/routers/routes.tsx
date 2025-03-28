@@ -11,7 +11,9 @@ export type RoutePaths = keyof typeof ROUTES
 export type RoteUrls = (typeof ROUTES)[RoutePaths]
 
 export const AppRoutes = () => {
-  <Routes>
-    <Route path={ROUTES.HOME} element={<Home />} />
-  </Routes>
+  return (
+    <Routes>
+      <Route path={ROUTES.HOME} element={<Home />} />
+    </Routes>
+  )
 };
