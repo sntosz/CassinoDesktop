@@ -95,10 +95,10 @@ code {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    --background: 224 71.4% 4.1%; /* Fundo escuro */
+    --foreground: 210 20% 98%; /* Texto claro */
+    --card: 215 27.9% 16.9%; /* Fundo do card mais claro que o fundo */
+    --card-foreground: 210 20% 98%;
     --popover: 0 0% 100%;
     --popover-foreground: 224 71.4% 4.1%;
     --primary: 220.9 39.3% 11%;
@@ -130,9 +130,9 @@ code {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-    --card: 224 71.4% 4.1%;
+    --background: 224 71.4% 4.1%; /* Fundo escuro */
+    --foreground: 210 20% 98%; /* Texto claro */
+    --card: 215 27.9% 16.9%; /* Fundo do card mais claro que o fundo */
     --card-foreground: 210 20% 98%;
     --popover: 224 71.4% 4.1%;
     --popover-foreground: 210 20% 98%;
@@ -168,7 +168,7 @@ code {
 
 
 @layer base {
-
+  
   body {
     @apply bg-background text-foreground;
   }
