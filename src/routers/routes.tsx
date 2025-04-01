@@ -1,4 +1,5 @@
 import { Home } from "@/pages/home";
+import { Register } from "@/pages/register";
 import { Routes, Route } from 'react-router'
 
 export const ROUTES = {
@@ -13,7 +14,7 @@ export type RoteUrls = (typeof ROUTES)[RoutePaths]
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={ROUTES.HOME} element={<Home />} />
+      <Route path={ROUTES.CADASTRAR} element={<Register/>} />
     </Routes>
   )
 };
