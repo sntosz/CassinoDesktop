@@ -11,10 +11,10 @@ export interface CardGameProps{
 
 export function CardGame({ image, titulo, subtitulo,  descricao }: CardGameProps){
     return(
-        <Card className="flex flex-col items-center justify-center p-6">
+        <Card className="flex border border-solid border-border border-[#666666] flex-col items-center justify-center p-6">
             <CardHeader className="text-yellow-500">
                 <div className="w-56 rounded">
-                    <img className="w-full rounded border border-white h-32" src={image} alt="" />
+                    <img className="w-full rounded h-32" src={image} alt="" />
                 </div> 
                 <CardTitle>{titulo}</CardTitle>
                 <CardDescription className="text-white pb-3">{subtitulo}</CardDescription>
