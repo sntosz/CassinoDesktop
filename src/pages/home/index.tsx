@@ -16,7 +16,6 @@ export function Home() {
       <img className="w-16 h-16" src="../../../public/logo.png" alt="" />
       <Input 
       label="Digite seu nome"
-      iconRight =<Mail/>
       />
     </div>
   );
