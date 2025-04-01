@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils'
 import { type ComponentProps, type ReactNode, forwardRef } from 'react'
 import { Label } from './Label'
+import { Label } from './Label'
 
 export interface InputProps extends ComponentProps<'input'> {
   iconLeft?: ReactNode
