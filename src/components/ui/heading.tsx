@@ -1,6 +1,6 @@
 import { type VariantProps, cva } from 'class-variance-authority'
 
-const headingVariants = cva('text-white text-xl gap-4 font-bold flex flex-col ', {
+const headingVariants = cva(' text-white text-xl gap-4 font-bold flex flex-col ', {
   variants: {
     size: {
       default: 'text-sm',
