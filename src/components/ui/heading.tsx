@@ -1,5 +1,5 @@
 import { type VariantProps, cva } from 'class-variance-authority'
- 
+
 const headingVariants = cva(' text-white text-xl gap-4 font-bold flex flex-col ', {
   variants: {
     size: {
@@ -17,8 +17,8 @@ const headingVariants = cva(' text-white text-xl gap-4 font-bold flex flex-col '
     align: 'left',
   },
 })
- 
-const underlineVariants = cva('w-[150px] h-[2px] bg-yellow-500', {
+
+const underlineVariants = cva('w-[140px] h-[2px] bg-yellow-500', {
   variants: {
     variant: {
       primary: 'bg-yellow-500',
