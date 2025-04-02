@@ -1,6 +1,6 @@
 import { type VariantProps, cva } from 'class-variance-authority'
-
-const headingVariants = cva('text-white font-bold flex flex-col', {
+ 
+const headingVariants = cva(' text-white text-xl gap-4 font-bold flex flex-col ', {
   variants: {
     size: {
       default: 'text-sm',
@@ -17,8 +17,8 @@ const headingVariants = cva('text-white font-bold flex flex-col', {
     align: 'left',
   },
 })
-
-const underlineVariants = cva('w-[160px] h-1 bg-yellow-500', {
+ 
+const underlineVariants = cva('w-[150px] h-[2px] bg-yellow-500', {
   variants: {
     variant: {
       primary: 'bg-yellow-500',
@@ -30,13 +30,13 @@ const underlineVariants = cva('w-[160px] h-1 bg-yellow-500', {
     variant: 'primary',
   },
 })
-
+ 
 type Props = VariantProps<typeof headingVariants> &
   VariantProps<typeof underlineVariants> & {
     children?: string
     className?: string
   }
-
+ 
 export function Heading({ variant, size, align, className, ...props }: Props) {
   return (
     <div className={headingVariants({ size, align, className })}>

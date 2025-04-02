@@ -3,9 +3,9 @@ import { Register } from "@/pages/register";
 import { Routes, Route } from 'react-router'
 
 export const ROUTES = {
-  HOME: '/',
+  HOME: '/aa',
   ENTRAR: '/entrar',
-  CADASTRAR: '/cadastrar',
+  CADASTRAR: '/',
 } as const
 
 export type RoutePaths = keyof typeof ROUTES
