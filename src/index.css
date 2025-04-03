@@ -76,7 +76,7 @@
 }
 @layer base {
   * {
-    @apply border-border box-border m-0 p-0;
+    @apply border box-border text-sm md:text-base m-0 p-0;
   }
   body {
     @apply bg-background text-foreground antialiased;
@@ -86,7 +86,7 @@
   input,
   select,
   textarea {
-    @apply font-inter;
+    @apply font-sans;
   }
 
   ::-webkit-scrollbar {
@@ -104,7 +104,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply box-border; /* Mantém outros estilos globais, mas remove bordas */
   }
   body {
     @apply bg-background text-foreground;
