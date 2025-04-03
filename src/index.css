@@ -86,7 +86,7 @@
   input,
   select,
   textarea {
-    @apply font-inter;
+    @apply font-sans;
   }
 
   ::-webkit-scrollbar {
