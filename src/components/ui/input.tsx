@@ -1,14 +1,14 @@
 import { cn } from '@/lib/utils'
 import { type ComponentProps, type ReactNode, forwardRef } from 'react'
 import { Label } from './Label'
-
+ 
 export interface InputProps extends ComponentProps<'input'> {
   iconLeft?: ReactNode
   iconRight?: ReactNode
   label?: string
   required?: boolean
 }
-
+ 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -31,14 +31,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {required && <span className="text-red-500">{' *'}</span>}
           </Label>
         )}
-
+ 
         <div className="relative w-full">
           {iconLeft && (
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
               {iconLeft}
             </span>
           )}
-
+ 
           <input
             type={type}
             id={id}
@@ -59,7 +59,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             {...props}
           />
-
+ 
           {iconRight && (
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
               {iconRight}
@@ -72,5 +72,5 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 )
 
 Input.displayName = "Input";
-
+ 
 export { Input };
