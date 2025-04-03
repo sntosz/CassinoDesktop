@@ -41,7 +41,7 @@ export function Login() {
       >
         <div className="relative ml-64 w-1/2 flex justify-center items-center">
           <img src="../../../public/banner.png" alt="banner" />
-          <Heading className="ml-96 mb-auto mt-60 font-bold text-white animate-fadeUp">
+          <Heading className="ml-80 mb-auto mt-60 font-bold text-white animate-fadeUp">
             Entrar
           </Heading>
         </div>
