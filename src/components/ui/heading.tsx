@@ -18,7 +18,7 @@ const headingVariants = cva(' text-white text-xl gap-4 font-bold flex flex-col '
   },
 })
 
-const underlineVariants = cva('w-[140px] h-[2px] bg-yellow-500', {
+const underlineVariants = cva('w-[160px] h-[2px] bg-yellow-500', {
   variants: {
     variant: {
       primary: 'bg-yellow-500',

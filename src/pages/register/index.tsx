@@ -42,7 +42,7 @@ export function Register() {
         <div className="relative ml-64 w-1/2 flex justify-center items-center">
           <img src="../../../public/banner.png" alt="banner" />
           <Heading className="ml-96 mb-auto mt-52 text-xs font-bold text-white animate-fadeUp">
-            Criar uma Conta
+            Criar Conta
           </Heading>
         </div>
         <div className="text-white flex justify-center items-center flex-col gap-6 mt-20 ml-16 animate-fadeUp">
