@@ -76,7 +76,7 @@
 }
 @layer base {
   * {
-    @apply border box-border text-sm md:text-base m-0 p-0;
+    @apply border box-border m-0 p-0;
   }
   body {
     @apply bg-background text-foreground antialiased;

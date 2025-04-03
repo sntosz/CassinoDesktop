@@ -14,7 +14,7 @@ export type RoteUrls = (typeof ROUTES)[RoutePaths]
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={ROUTES.CADASTRAR} element={<Register/>} />
+      <Route path={ROUTES.CADASTRAR} element={<Home />} />
     </Routes>
   )
 };
