@@ -14,7 +14,7 @@ export type RoteUrls = (typeof ROUTES)[RoutePaths]
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={ROUTES.ENTRAR} element={<Login />} />
+      <Route path={ROUTES.ENTRAR} element={<Home />} />
     </Routes>
   )
 };

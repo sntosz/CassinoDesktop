@@ -13,7 +13,7 @@ export function Home() {
       subtitulo="jogo de aventura"
       descricao="O poker é um jogo de cartas em que os jogadores apostam com base na força de suas mãos, combinando estratégia, blefe e sorte."
       />
-      <img className="w-16 h-16" src="../../../public/logo.png" alt="" />
+      <img className="w-16 h-16" src="../../../public/Casino-logo.png" alt="" />
       <Input 
       label="Digite seu nome"
       />
