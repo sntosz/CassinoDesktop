@@ -1,11 +1,11 @@
 import { Home } from "@/pages/home";
-import { Login } from "@/pages/login";
+import { Register } from "@/pages/register";
 import { Routes, Route } from 'react-router'
 
 export const ROUTES = {
-  HOME: '/home',
-  ENTRAR: '/',
-  CADASTRAR: '/cadastrar',
+  HOME: '/aa',
+  ENTRAR: '/entrar',
+  CADASTRAR: '/',
 } as const
 
 export type RoutePaths = keyof typeof ROUTES
