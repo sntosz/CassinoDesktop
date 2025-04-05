@@ -104,7 +104,7 @@
 
 @layer base {
   * {
-    @apply box-border; /* Mantém outros estilos globais, mas remove bordas */
+    @apply box-border; 
   }
   body {
     @apply bg-background text-foreground;
