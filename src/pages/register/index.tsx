@@ -31,53 +31,52 @@ export function Register() {
           .animate-fadeUp {
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeUp 0.5s ease-out forwards;
+            animation: fadeUp 0.8s ease-out forwards;
           }
         `}
       </style>
  
-      <div
-        className="flex bg-gradient-to-b from-[#07080D] to-[#1D1F2C] w-screen h-[100vh] animate-fadeUp p-0 m-0"
-      >
-        <div className="relative ml-64 w-1/2 flex justify-center items-center">
+      <div className="flex items-center bg-gradient-to-b from-[#07080D] to-[#1D1F2C] w-screen h-[100vh] animate-fadeUp p-0 m-0">
+        <div className="w-1/2 flex justify-center items-center">
           <img src="../../../public/banner.png" alt="banner" />
-          <Heading className="ml-96 mb-auto mt-52 text-xs font-bold text-white animate-fadeUp">
-            Criar Conta
-          </Heading>
         </div>
-        <div className="text-white flex justify-center items-center flex-col gap-6 mt-20 ml-16 animate-fadeUp">
-          <Input
-            type="text"
-            label="Nome"
-            placeholder="Digite seu nome"
-            iconRight={<UserRound />}
-            className="text-white h-12 w-96"
-          />
-          <Input
-            type="email"
-            label="E-mail"
-            placeholder="Digite seu e-mail"
-            iconRight={<Mail />}
-            className="text-white w-96 h-12"
-          />
-          <Input
-            type="password"
-            label="Senha"
-            placeholder="Digite sua senha"
-            iconRight={<Lock />}
-            className="text-white w-96 h-12"
-          />
-          <Input
-            type="password"
-            label="Confirme sua Senha"
-            placeholder="Confirme sua senha"
-            iconRight={<Lock />}
-            className="text-white w-96 h-12"
-          />
-          <Button className="text-xl h-12 w-96 text-black">Cadastrar</Button>
-          <div className="flex">
-            <p className="text-gray-400 mt-5">Ja tem uma conta?</p>
-            <p className="mt-5 ml-1">Entrar</p>
+        <div className="flex flex-col justify-center items-center gap-8 h-screen w-1/2">
+          <div className="text-white h-full flex justify-center items-center flex-col gap-6 animate-fadeUp">
+            <Heading className="flex w-full font-bold text-white animate-fadeUp">
+              Criar Conta
+            </Heading>
+            <Input
+              type="email"
+              label="Endereço de E-mail"
+              placeholder="Digite seu e-mail"
+              iconRight={<Mail />}
+              className="text-white w-96 h-12"
+            />
+              <Input
+                type="text"
+                label="CPF"
+                placeholder="Digite seu CPF"
+                iconRight={<UserRound />}
+                className="text-white h-12 w-96"
+              />
+              <Input
+                type="date"
+                label="Data de Nascimento"
+                placeholder="Digite sua data de nascimento"
+                // iconRight={<UserRound />}
+                className="text-white h-12 w-96 placeholder:w-full"
+              />
+              <Input
+                type="password"
+                label="Senha"
+                placeholder="Digite sua senha"
+                iconRight={<Lock />}
+                className="text-white w-96 h-12"
+              />
+              <div className="flex flex-col gap-4 items-center">
+                <Button className="text-lg h-12 w-96 text-black">Cadastrar</Button>
+                <p className="text-gray-400">Já tem uma conta? <Link className="text-yellow-500 hover:underline hover:text-yellow-600 no-underline" to={'/'} >Entrar</Link></p>
+              </div>
           </div>
         </div>
       </div>
