@@ -3,8 +3,9 @@ import { Link } from "react-router";
 import { Input } from "@/components/ui/input";
 import { Heading } from "@/components/ui/heading";
 import { Lock, Mail, UserRound } from "lucide-react";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
  
-export function Register() {
+export function ConfirmPassword() {
   return (
     <>
       <style>
@@ -46,39 +47,38 @@ export function Register() {
               Criar Conta
             </Heading>
             <Input
-              type="text"
-              label="Nome Completo"
-              placeholder="Digite seu nome completo"
-              iconRight={<Mail />}
-              className="w-96"
+            type="password"
+            label="Senha"
+            placeholder="Digite sua senha"
+            iconRight={<Lock />}
+            className="w-96"
             />
             <Input
-              type="email"
-              label="Endereço de E-mail"
-              placeholder="Digite seu e-mail"
-              iconRight={<Mail />}
-              className="w-96"
+            type="password"
+            label="Confirmar Senha"
+            placeholder="Digite sua senha novamente"
+            iconRight={<Lock />}
+            className="w-96"
             />
-              <Input
-                type="text"
-                label="CPF"
-                placeholder="Digite seu CPF"
-                iconRight={<UserRound />}
-                className="w-96"
-              />
-              <Input
-                type="date"
-                label="Data de Nascimento"
-                placeholder="Digite sua data de nascimento"
-                // iconRight={<UserRound />}
-                className="text-slate-300 w-96 placeholder:text-slate-500"
-              />
-              <div className="flex flex-col gap-2 items-center">
-                <Link to={'/confirmar-senha'} className="w-full">
-                  <Button type="submit" className="text-lg h-12 w-96 text-black">Cadastrar</Button>
-                </Link>
-                <p className="text-gray-400">Já tem uma conta? <Link className="text-yellow-500 hover:underline hover:text-yellow-600 no-underline" to={'/'} >Entrar</Link></p>
-              </div>
+            <AlertDialog>
+              <AlertDialogTrigger className='rounded-lg' >
+            <div className="flex flex-col gap-2 items-center">
+                <Button type="submit" className="text-lg h-12 w-96 text-black">Criar</Button>
+            </div>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle className="text-center text-yellow-500 text-3xl">Parabéns!</AlertDialogTitle>
+                  <AlertDialogDescription className="text-center text-lg">
+                    Conta criada com sucesso!
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogAction>Avançar </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+
           </div>
         </div>
       </div>

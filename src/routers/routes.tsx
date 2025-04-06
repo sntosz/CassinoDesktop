@@ -1,12 +1,14 @@
 import { Home } from "@/pages/home";
 import { Login } from "@/pages/login";
 import { Register } from "@/pages/register";
+import { ConfirmPassword } from "@/pages/register/confirmPassword";
 import { Routes, Route } from 'react-router'
 
 export const ROUTES = {
   HOME: '/home',
   ENTRAR: '/',
   CADASTRAR: '/cadastrar',
+  CONFIRMARSENHA: '/confirmar-senha',
 } as const
 
 export type RoutePaths = keyof typeof ROUTES
@@ -17,6 +19,7 @@ export const AppRoutes = () => {
     <Routes>
       <Route path={ROUTES.ENTRAR} element={<Login />} />
       <Route path={ROUTES.CADASTRAR} element={<Register />} />
+      <Route path={ROUTES.CONFIRMARSENHA} element={<ConfirmPassword />} />
     </Routes>
   )
 };
