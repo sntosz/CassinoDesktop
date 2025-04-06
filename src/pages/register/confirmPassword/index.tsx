@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
 import { Input } from "@/components/ui/input";
 import { Heading } from "@/components/ui/heading";
-import { Lock, Mail, UserRound } from "lucide-react";
+import { Lock, Mail, PartyPopper, UserRound } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
  
 export function ConfirmPassword() {
@@ -68,7 +68,7 @@ export function ConfirmPassword() {
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle className="text-center text-yellow-500 text-3xl">Parabéns!</AlertDialogTitle>
+                  <AlertDialogTitle className="text-center text-yellow-500 text-3xl">Parabéns <PartyPopper className="text-yellow-500 w-6 h-6"/></AlertDialogTitle>
                   <AlertDialogDescription className="text-center text-lg">
                     Conta criada com sucesso!
                   </AlertDialogDescription>
