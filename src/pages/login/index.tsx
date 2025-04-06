@@ -50,16 +50,16 @@ export function Login() {
               label="Endereço de E-mail"
               placeholder="Digite seu e-mail"
               iconRight={<Mail />}
-              className="text-white w-96 h-12"
+              className="w-96"
             />
             <Input
               type="password"
               label="Senha"
               placeholder="Digite sua senha"
               iconRight={<Lock />}
-              className="text-white w-96 h-12"
+              className="w-96"
             />
-            <div className="flex flex-col gap-4 items-center">
+            <div className="flex flex-col gap-2 items-center">
               <Button className="text-lg h-12 w-96 text-black">Entrar</Button>
               <p className="text-gray-400">Não tem uma conta? <Link className="text-yellow-500 hover:underline hover:text-yellow-600 no-underline" to={'/cadastrar'} >Criar</Link></p>
             </div>
