@@ -17,7 +17,7 @@ export type RoteUrls = (typeof ROUTES)[RoutePaths]
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={ROUTES.ENTRAR} element={<Login />} />
+      <Route path={ROUTES.ENTRAR} element={<Home />} />
       <Route path={ROUTES.CADASTRAR} element={<Register />} />
       <Route path={ROUTES.CONFIRMARSENHA} element={<ConfirmPassword />} />
     </Routes>
