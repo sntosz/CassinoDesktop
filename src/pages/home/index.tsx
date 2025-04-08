@@ -6,7 +6,7 @@ import { LayoutHome } from "@/layout/LayoutHome";
 export function Home() {
   return (
     <LayoutHome>
-      <Heading className="mb-10">Jogos</Heading>
+      <Heading size={"default"} className="mb-10">Jogos</Heading>
       <div className="flex items-center gap-6">
         <CardGame 
           titulo="Poker"
