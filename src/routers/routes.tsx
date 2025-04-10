@@ -1,3 +1,4 @@
+import { EditarPerfil } from "@/pages/edit_profile";
 import { Home } from "@/pages/home";
 import { Login } from "@/pages/login";
 import { Register } from "@/pages/register";
