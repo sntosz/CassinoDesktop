@@ -1,4 +1,4 @@
-import { EditarPerfil } from "@/pages/edit_profile";
+import { Profile } from "@/pages/profile";
 import { Home } from "@/pages/home";
 import { Login } from "@/pages/login";
 import { Register } from "@/pages/register";
@@ -12,6 +12,7 @@ export const ROUTES = {
   CADASTRAR: '/cadastrar',
   CONFIRMARSENHA: '/confirmar-senha',
   TRANSACOES: '/transacoes',
+  PERFIL: '/perfil'
 } as const
 
 export type RoutePaths = keyof typeof ROUTES
@@ -25,6 +26,7 @@ export const AppRoutes = () => {
       <Route path={ROUTES.CONFIRMARSENHA} element={<ConfirmPassword />} />
       <Route path={ROUTES.HOME} element={<Home />} />
       <Route path={ROUTES.TRANSACOES} element={<Transactions />} />
+      <Route path={ROUTES.PERFIL} element={<Profile />} />
     </Routes>
   )
 };
