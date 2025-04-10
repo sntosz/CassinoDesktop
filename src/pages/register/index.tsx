@@ -38,7 +38,7 @@ export function Register() {
  
       <div className="flex items-center bg-gradient-to-b from-[#07080D] to-[#1D1F2C] w-screen h-[100vh] animate-fadeUp p-0 m-0">
         <div className="w-1/2 flex justify-center items-center">
-          <img src="../../../public/banner.png" alt="banner" />
+          <img src="../../../banner.png" alt="banner" />
         </div>
         <div className="flex flex-col justify-center items-center gap-8 h-screen w-1/2">
           <div className="text-white h-full flex justify-center items-center flex-col gap-6 animate-fadeUp">

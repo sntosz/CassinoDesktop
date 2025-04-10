@@ -38,7 +38,7 @@ export function Login() {
  
       <div className="flex items-center bg-gradient-to-b from-[#07080D] to-[#1D1F2C] w-screen h-[100vh] animate-fadeUp p-0 m-0">
         <div className="w-1/2 flex justify-center items-center">
-          <img src="../../../public/banner.png" alt="banner" />
+          <img src="../../../banner.png" alt="banner" />
         </div>
         <div className="flex flex-col justify-center items-center gap-8 h-screen w-1/2">
           <div className="text-white h-full flex justify-center items-center flex-col gap-6 animate-fadeUp">
@@ -60,7 +60,9 @@ export function Login() {
               className="w-96"
             />
             <div className="flex flex-col gap-2 items-center">
-              <Button className="text-lg h-12 w-96 text-black">Entrar</Button>
+              <Link to={'/home'} className="w-full">
+                <Button className="text-lg h-12 w-96 text-black">Entrar</Button>
+              </Link>
               <p className="text-gray-400">Não tem uma conta? <Link className="text-yellow-500 hover:underline hover:text-yellow-600 no-underline" to={'/cadastrar'} >Criar</Link></p>
             </div>
           </div>

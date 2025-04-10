@@ -44,20 +44,22 @@ import { CircleDollarSign, CircleUserRound, Gamepad2, LogOut, Settings } from "l
                     placeholder=""
                     onPointerEnterCapture={() => {}}
                     onPointerLeaveCapture={() => {}}>
-                    <ListItem
-                        className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"  
-                        placeholder=""
-                        onPointerEnterCapture={() => {}}
-                        onPointerLeaveCapture={() => {}}>
-                        <ListItemPrefix 
-                        placeholder=""
-                        onPointerEnterCapture={() => {}}
-                        onPointerLeaveCapture={() => {}}>
-                        <Gamepad2 className="h-6 w-6" />
-                        </ListItemPrefix>
-                        Jogos
-                    </ListItem>
-                    <Link to="/wallet" className="no-underline">
+                        <Link to={"/home"} className="no-underline">
+                            <ListItem
+                                className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"  
+                                placeholder=""
+                                onPointerEnterCapture={() => {}}
+                                onPointerLeaveCapture={() => {}}>
+                                <ListItemPrefix 
+                                placeholder=""
+                                onPointerEnterCapture={() => {}}
+                                onPointerLeaveCapture={() => {}}>
+                                <Gamepad2 className="h-6 w-6" />
+                                </ListItemPrefix>
+                                Jogos
+                            </ListItem>
+                        </Link>
+                    <Link to="/transacoes" className="no-underline">
                         <ListItem
                             className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"  
                             placeholder=""
@@ -71,18 +73,20 @@ import { CircleDollarSign, CircleUserRound, Gamepad2, LogOut, Settings } from "l
                             Saldo e Transações
                         </ListItem>
                     </Link>
-                    <ListItem
-                        className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"
-                        placeholder=""
-                        onPointerEnterCapture={() => {}}
-                        onPointerLeaveCapture={() => {}}>
-                        <ListItemPrefix placeholder=""
+                    <Link to={'/perfil'} className="no-underline">
+                        <ListItem
+                            className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"
+                            placeholder=""
                             onPointerEnterCapture={() => {}}
                             onPointerLeaveCapture={() => {}}>
-                        <CircleUserRound className="h-6 w-6" />
-                        </ListItemPrefix>
-                        Perfil
-                    </ListItem>
+                            <ListItemPrefix placeholder=""
+                                onPointerEnterCapture={() => {}}
+                                onPointerLeaveCapture={() => {}}>
+                            <CircleUserRound className="h-6 w-6" />
+                            </ListItemPrefix>
+                            Perfil
+                        </ListItem>
+                    </Link>
                     <ListItem
                         className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"  
                         placeholder=""
@@ -97,21 +101,23 @@ import { CircleDollarSign, CircleUserRound, Gamepad2, LogOut, Settings } from "l
                         </ListItemPrefix>
                         Configurações
                     </ListItem>
-                    <ListItem 
-                        className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"
-                        placeholder=""
-                        onPointerEnterCapture={() => {}}
-                        onPointerLeaveCapture={() => {}}
-                        >
-                        <ListItemPrefix 
+                    <Link to={'/'} className="no-underline">
+                        <ListItem 
+                            className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"
                             placeholder=""
                             onPointerEnterCapture={() => {}}
                             onPointerLeaveCapture={() => {}}
-                        >
-                            <LogOut className="h-6 w-6" />
-                        </ListItemPrefix>
-                        Sair
-                    </ListItem>
+                            >
+                            <ListItemPrefix 
+                                placeholder=""
+                                onPointerEnterCapture={() => {}}
+                                onPointerLeaveCapture={() => {}}
+                            >
+                                <LogOut className="h-6 w-6" />
+                            </ListItemPrefix>
+                            Sair
+                        </ListItem>
+                    </Link>
                 </List>
             </Card>
     );
