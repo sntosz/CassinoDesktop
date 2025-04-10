@@ -74,9 +74,9 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
-@layer base {
+ @layer base { 
   * {
-    @apply border box-border m-0 p-0;
+    @apply  box-border m-0 p-0;
   }
   body {
     @apply bg-background text-foreground antialiased;
@@ -102,11 +102,4 @@
   }
 }
 
-@layer base {
-  * {
-    @apply box-border; 
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+

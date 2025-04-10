@@ -1,3 +1,4 @@
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { LayoutHome } from '@/layout/LayoutHome';
 
 interface BankOption {
@@ -7,7 +8,7 @@ interface BankOption {
   type: 'instant' | 'regular';
 }
 
-const TransactionsPage = () => {
+export function Transactions(){
   const bankOptions: BankOption[] = [
     {
       name: 'Pix',
@@ -49,30 +50,39 @@ const TransactionsPage = () => {
 
   return (
     <LayoutHome>
-      <div className="min-h-screen">
+      <div className="min-h-screen mp">
         <header className="mb-6">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-white">Depósito</h1>
           </div>
         </header>
+        {/* <Accordion type="single" collapsible>
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Is it accessible?</AccordionTrigger>
+            <AccordionContent>
+              Yes. It adheres to the WAI-ARIA design pattern.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion> */}
+
 
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-8">
-            <div className="bg-[#1D1F2C] rounded-lg border border-gray-800">
-              <div className="p-4 border-b border-gray-800">
+            <div className="bg-[#1D1F2C] rounded-lg ">
+              <div className="p-4 border-b-[1px] border-[#45474F]">
                 <h2 className="text-lg font-semibold text-white">BANCO</h2>
               </div>
-              <div className="divide-y divide-gray-800">
+              <div className="">
                 {bankOptions.map((bank) => (
                   <button
                     key={bank.name}
-                    className="w-full p-4 flex items-center justify-between hover:bg-[#282B3B] transition-colors bg-[#1D1F2C]"
+                    className="w-full p-4 flex  items-center border-solid border border-b-[1px] border-[#45474F]  justify-between hover:bg-[#282B3B] transition-colors bg-[#1D1F2C]"
                   >
                     <div className="flex items-center gap-4">
                       <img
                         src={bank.logo}
                         alt={`${bank.name} logo`}
-                        className="w-8 h-8 object-contain"
+                        className="w-8 h-8 "
                       />
                       <div className="text-left">
                         <p className="font-medium text-white">{bank.name}</p>
@@ -122,5 +132,3 @@ const TransactionsPage = () => {
     </LayoutHome>
   );
 };
-
-export default TransactionsPage; 
