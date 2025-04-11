@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import { Input } from "@/components/ui/input";
 import { Heading } from "@/components/ui/heading";
 import { Lock, Mail, UserRound } from "lucide-react";
-import UserList from "@/components/teste/teste";
  
 export function Login() {
   return (
@@ -68,7 +67,6 @@ export function Login() {
             </div>
           </div>
         </div>
-        <UserList/>
       </div>
     </>
   );

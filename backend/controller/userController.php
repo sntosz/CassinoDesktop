@@ -1,32 +1,50 @@
-// controllers/UserController.php
 <?php
-require_once 'models/UserModel.php';
+include_once __DIR__ . "/../db/db.php";
 
-class UserController {
-    private $model;
+class UserController{
+    private $conn;
+    
 
-    public function __construct() {
-        $this->model = new UserModel();
+    public function __construct()
+    {
+        $objDb = new Bd();
+        $this->conn = $objDb->connect();
+
     }
 
-    public function handleRequest() {
-        $method = $_SERVER['REQUEST_METHOD'];
-
-        if ($method === 'GET') {
-            $users = $this->model->getAllUsers();
-            echo json_encode($users);
-        } elseif ($method === 'POST') {
-            $data = json_decode(file_get_contents('php://input'), true);
-            if (isset($data['name'])) {
-                $newUser = $this->model->addUser($data['name']);
-                echo json_encode($newUser);
-            } else {
-                http_response_code(400);
-                echo json_encode(['error' => 'Nome é obrigatório']);
-            }
-        } else {
-            http_response_code(405);
-            echo json_encode(['error' => 'Método não permitido']);
+    public function GetAllUser(){
+        try {
+            $sql = "SELECT * FROM usuario";
+            $db = $this->conn->prepare($sql);
+            $db->execute();
+            $user = $db->fetchAll(PDO::FETCH_ASSOC);
+            return $user;
+        } catch (\Exception $th) {
+            return $th->getMessage();
         }
     }
+
+    public function CriarUsuario($nome, $email, $cpf, $dataNascimento){
+        try {
+            $sql = "INSERT INTO usuario (nome, email, cpf, dataNascimento) VALUES(:nome, :email, :cpf, :dataNascimento)";
+            $db = $this->conn->prepare($sql);
+            $db->bindParam(":nome", $nome);
+            $db->bindParam(":email", $email);
+            $db->bindParam(":cpf", $cpf);
+            $db->bindParam(":dataNascimento", $dataNascimento);
+            // $db->bindParam(":senha", $senha);
+            if($db->execute()){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (\Exception $th) {
+            //throw $th;
+        }
+    }
+
+
+    
 }
+
+?>
