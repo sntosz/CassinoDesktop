@@ -3,6 +3,7 @@ include_once __DIR__ . "/../db/db.php";
 
 class UserController{
     private $conn;
+    public $table = "usuario";
     
 
     public function __construct()
@@ -14,7 +15,7 @@ class UserController{
 
     public function GetAllUser(){
         try {
-            $sql = "SELECT * FROM usuario";
+            $sql = "SELECT * FROM $this->table";
             $db = $this->conn->prepare($sql);
             $db->execute();
             $user = $db->fetchAll(PDO::FETCH_ASSOC);
@@ -26,7 +27,7 @@ class UserController{
 
     public function CriarUsuario($nome, $email, $cpf, $dataNascimento){
         try {
-            $sql = "INSERT INTO usuario (nome, email, cpf, dataNascimento) VALUES(:nome, :email, :cpf, :dataNascimento)";
+            $sql = "INSERT INTO $this->table (nome, email, cpf, dataNascimento) VALUES(:nome, :email, :cpf, :dataNascimento)";
             $db = $this->conn->prepare($sql);
             $db->bindParam(":nome", $nome);
             $db->bindParam(":email", $email);
