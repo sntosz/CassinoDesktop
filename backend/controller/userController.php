@@ -12,10 +12,11 @@ class UserController{
 
     }
 
-    public function GetAllUser(){
+    public function BuscarEmail($email){
         try {
-            $sql = "SELECT * FROM usuario";
+            $sql = "SELECT :email FROM usuarios;";
             $db = $this->conn->prepare($sql);
+            $db->bindParam(":email", $email);
             $db->execute();
             $user = $db->fetchAll(PDO::FETCH_ASSOC);
             return $user;
@@ -24,15 +25,15 @@ class UserController{
         }
     }
 
-    public function CriarUsuario($nome, $email, $cpf, $dataNascimento){
+    public function CriarUsuario($nome, $email, $cpf, $data_nascimento, $senha_hash){
         try {
-            $sql = "INSERT INTO usuario (nome, email, cpf, dataNascimento) VALUES(:nome, :email, :cpf, :dataNascimento)";
+            $sql = "INSERT INTO usuarios (nome, email, cpf, data_nascimento, senha_hash) VALUES(:nome, :email, :cpf, :data_nascimento, :senha_hash);";
             $db = $this->conn->prepare($sql);
             $db->bindParam(":nome", $nome);
             $db->bindParam(":email", $email);
             $db->bindParam(":cpf", $cpf);
-            $db->bindParam(":dataNascimento", $dataNascimento);
-            // $db->bindParam(":senha", $senha);
+            $db->bindParam(":data_nascimento", $data_nascimento);
+            $db->bindParam(":senha_hash", $senha_hash);
             if($db->execute()){
                 return true;
             }else{

@@ -1,13 +1,36 @@
-export async function Cadastro(nome: string, email: string, cpf: string, dataNascimento: string,){
- 
-    const resposta = await fetch("http://localhost/cassino/backend/router/userRouter.php?acao=cadastrar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({nome: nome, email: email, cpf: cpf, dataNascimento: dataNascimento})
-    })
-    const dados = await resposta.json()
-    return dados
-
+export async function Cadastro(nome: string, email: string, cpf: string, dataNascimento: string, senha : string) {
+    try {
+        const resposta = await fetch("http://localhost/cassino/backend/router/userRouter.php?acao=cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ nome, email, cpf, dataNascimento, senha })
+        });
+       
+        const dados = await resposta.json();
+        console.log(dados.status)
+        return dados;
+    } catch (error) {
+        console.error("Error in Cadastro:", error);
+        throw error;
+    }
+}
+export async function VerificarEmail(email: string) {
+    try {
+        const resposta = await fetch("http://localhost/cassino/backend/router/userRouter.php?acao=cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email })
+        });
+       
+        const dados = await resposta.json();
+        console.log(dados.status)
+        return dados;
+    } catch (error) {
+        console.error("Error in Cadastro:", error);
+        throw error;
+    }
 }

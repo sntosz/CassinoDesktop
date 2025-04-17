@@ -1,35 +1,32 @@
 <?php
-
 header("Access-Control-Allow-Origin: *");
-
-// Permite os métodos que seu frontend vai usar
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-
-// Permite headers personalizados (como Content-Type, Authorization, etc.)
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 require_once __DIR__ . "/../controller/userController.php";
 $userController = new UserController();
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    switch ($_GET["acao"]){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    switch ($_GET["acao"]) {
         case 'cadastrar':
             $valores = json_decode(file_get_contents("php://input"), true);
-        
+
             $nome = $valores["nome"];
             $email = $valores["email"];
             $cpf = $valores["cpf"];
             $dataNascimento = $valores["dataNascimento"];
-            // $senha = $_POST["senha"];
+            $senha = $valores["senha"];
 
-            if(!(empty($nome) || empty($email) || empty($cpf) || empty($dataNascimento))){
-                $resposta = $userController->CriarUsuario($nome,$email, $cpf, $dataNascimento) ;
-                echo $resposta;
-                // if($resposta){
-                //     header("Location: ../../src/pages/login/index.tsx");
-                // }
+            $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+            $resposta = $userController->CriarUsuario($nome, $email, $cpf, $dataNascimento, $senha_hash);
+
+            if ($resposta) {
+                echo json_encode(array("status" => 200, "message" => "Usuário cadastrado com sucesso!"));
+            } else {
+                echo json_encode(array("status" => 400, "message" => "Erro ao cadastrar usuário!"));
             }
-            // break;
+            break;
     }
 }
 ?>

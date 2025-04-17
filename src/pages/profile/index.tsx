@@ -18,7 +18,7 @@ export function Profile() {
                 <Button className="rounded">
                     Adicionar Foto
                 </Button>
-                <Button variant={"destructive"} className="rounded">
+                <Button className="rounded">
                     Excluir foto
                 </Button>
               </div>
