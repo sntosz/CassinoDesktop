@@ -1,28 +1,61 @@
 import { Button } from "@/components/ui/button";
-import { Link, data } from "react-router";
+import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Heading } from "@/components/ui/heading";
-import { Lock, Mail, UserRound } from "lucide-react";
+import { Lock, Mail, PartyPopper, UserRound } from "lucide-react";
 import { useState } from "react";
-import { Cadastro } from "@/api/api";
+import { Cadastro, VerificarEmail } from "@/api/api";
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import { differenceInYears } from 'date-fns';
 
 export function Register() {
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [dataNascimento, setDataNascimento] = useState("");
-  const [senha, setSenha] = useState("");
+  const [nome, setNome] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [cpf, setCpf] = useState<string>("");
+  const [dataNascimento, setDataNascimento] = useState<string>("");
+  const [senha, setSenha] = useState<string>("");
+  const [showDialog, setShowDialog] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const [emailError, setEmailError] = useState<string>("");
 
+  const validateAge = (date: string): boolean => {
+    const birthDate = new Date(date);
+    const today = new Date();
+    const age = differenceInYears(today, birthDate);
+    return age >= 18;
+  };
 
+  // const checkEmailExists = async (email: string): Promise<boolean> => {
+  //   const response = await VerificarEmail(email);
+  //   return response.exists;
+  // };
 
-
-  async function submit(event: any) {
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(nome)
-    const resultado = await Cadastro(nome,email,cpf,dataNascimento)
-    console.log(resultado)
+    setError("");
+    setEmailError("");
+
+    if (!validateAge(dataNascimento)) {
+      setError("Você deve ter pelo menos 18 anos para criar uma conta.");
+      return;
+    }
+
+    // const emailExists = await checkEmailExists(email);
+    // if (emailExists) {
+    //   setEmailError("Já existe uma conta com este e-mail.");
+    //   return;
+    // }
+
+    const resultado = await Cadastro(nome, email, cpf, dataNascimento, senha);
+    console.log(resultado);
+
+    if (resultado.status === 200) {
+      setShowDialog(true);
+    } else {
+      alert("Erro ao cadastrar. Tente novamente.");
+    }
   }
-  // const cadastro = Cadastro(nome, email, cpf, dataNascimento)
+
   return (
     <>
       <style>
@@ -63,7 +96,7 @@ export function Register() {
             <Heading className="flex w-full font-bold text-white animate-fadeUp">
               Criar Conta
             </Heading>
-            <form onSubmit={submit}>
+            <form className="space-y-6" onSubmit={submit}>
               <Input
                 name="nome"
                 onChange={(e) => setNome(e.target.value)}
@@ -73,42 +106,76 @@ export function Register() {
                 iconRight={<Mail />}
                 className="w-96"
               />
+              <div className="relative">
+                <Input
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  label="Endereço de E-mail"
+                  placeholder="Digite seu e-mail"
+                  iconRight={<Mail />}
+                  className={`w-96 ${emailError ? 'border-red-500' : ''}`}
+                />
+                {emailError && (
+                  <label className="absolute text-red-500 text-sm mt-1">{emailError}</label>
+                )}
+              </div>
               <Input
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                label="Endereço de E-mail"
-                placeholder="Digite seu e-mail"
-                iconRight={<Mail />}
-                className="w-96"
-              />
-              <Input
-              name="cpf"
-              onChange={(e) => setCpf(e.target.value)}
+                name="cpf"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
                 type="text"
                 label="CPF"
                 placeholder="Digite seu CPF"
                 iconRight={<UserRound />}
                 className="w-96"
               />
+              <div className="relative">
+                <Input
+                  name="data_Nascimento"
+                  onChange={(e) => setDataNascimento(e.target.value)}
+                  type="date"
+                  label="Data de Nascimento"
+                  placeholder="Digite sua data de nascimento"
+                  className={`text-slate-300 w-96 placeholder:text-slate-500 ${error ? 'border-red-500' : ''}`}
+                />
+                {error && (
+                  <label className="absolute text-red-500 text-sm mt-1">{error}</label>
+                )}
+              </div>
               <Input
-              name="dataNascimento"
-              onChange={(e) => setDataNascimento(e.target.value)}
-                type="date"
-                label="Data de Nascimento"
-                placeholder="Digite sua data de nascimento"
-                // iconRight={<UserRound />}
+                name="senha"
+                onChange={(e) => setSenha(e.target.value)}
+                type="password"
+                label="Senha"
+                placeholder="Digite sua senha"
+                iconRight={<Lock />}
                 className="text-slate-300 w-96 placeholder:text-slate-500"
               />
               <div className="flex flex-col gap-2 items-center">
-                {/* <Link to={'/confirmar-senha'} className="w-full">
-                  <Button type="submit" className="text-lg h-12 w-96 text-black">Cadastrar</Button>
-                </Link> */}
                 <Button type="submit" className="text-lg h-12 w-96 text-black">Cadastrar</Button>
                 <p className="text-gray-400">Já tem uma conta? <Link className="text-yellow-500 hover:underline hover:text-yellow-600 no-underline" to={'/'} >Entrar</Link></p>
               </div>
             </form>
-
+            {showDialog && (
+              <AlertDialog open={showDialog} onOpenChange={setShowDialog}>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle className="text-center text-yellow-500 text-3xl">
+                      Parabéns <PartyPopper className="text-yellow-500 w-6 h-6" />
+                    </AlertDialogTitle>
+                    <AlertDialogDescription className="text-center text-lg">
+                      Conta criada com sucesso!
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <Link to={"/"} className="w-full">
+                      <AlertDialogAction>Avançar</AlertDialogAction>
+                    </Link>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            )}
           </div>
         </div>
       </div>
