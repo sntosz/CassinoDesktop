@@ -25,10 +25,10 @@ export function Register() {
     return age >= 18;
   };
 
-  const checkEmailExists = async (email: string): Promise<boolean> => {
-    const response = await VerificarEmail(email);
-    return response.exists;
-  };
+  // const checkEmailExists = async (email: string): Promise<boolean> => {
+  //   const response = await VerificarEmail(email);
+  //   return response.exists;
+  // };
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -40,11 +40,11 @@ export function Register() {
       return;
     }
 
-    const emailExists = await checkEmailExists(email);
-    if (emailExists) {
-      setEmailError("Já existe uma conta com este e-mail.");
-      return;
-    }
+    // const emailExists = await checkEmailExists(email);
+    // if (emailExists) {
+    //   setEmailError("Já existe uma conta com este e-mail.");
+    //   return;
+    // }
 
     const resultado = await Cadastro(nome, email, cpf, dataNascimento, senha);
     console.log(resultado);
@@ -132,7 +132,7 @@ export function Register() {
               />
               <div className="relative">
                 <Input
-                  name="dataNascimento"
+                  name="data_Nascimento"
                   onChange={(e) => setDataNascimento(e.target.value)}
                   type="date"
                   label="Data de Nascimento"

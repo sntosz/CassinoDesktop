@@ -14,12 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nome = $valores["nome"];
             $email = $valores["email"];
             $cpf = $valores["cpf"];
-            $dataNascimento = $valores["dataNascimento"];
+            $data_nascimento = $valores["data_Nascimento"];
             $senha = $valores["senha"];
 
             $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-            $resposta = $userController->CriarUsuario($nome, $email, $cpf, $dataNascimento, $senha_hash);
+            $resposta = $userController->CriarUsuario($nome, $email, $cpf, $data_nascimento, $senha_hash);
 
             if ($resposta) {
                 echo json_encode(array("status" => 200, "message" => "Usuário cadastrado com sucesso!"));
