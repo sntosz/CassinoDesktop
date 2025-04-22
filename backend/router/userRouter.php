@@ -27,6 +27,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo json_encode(array("status" => 400, "message" => "Erro ao cadastrar usuário!"));
             }
             break;
+        case 'validarLogin':
+            $valores = json_decode(file_get_contents("php://input"), true);
+            $email = $valores["email"];
+            $senha = $valores["senha"];
+
+            $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+            $resultado = $userController->ValidaLogin($email, $senha);
+
+            if($resultado){
+                echo json_encode(array("status" => 200, "message" => "Login realizado com sucesso!"));
+            }else{
+                echo json_encode(array("status" => 400, "message" => "Erro ao realizar login!"));
+            }
+
+            break;
+        
+        default:
+            echo "Não achei";
+            break;
     }
 }
 ?>
