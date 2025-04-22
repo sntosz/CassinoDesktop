@@ -45,6 +45,22 @@ class UserController{
         }
     }
 
+    public function ValidaLogin($email,$senha_hash){
+        $sql = "SELECT * FROM usuarios WHERE email = :email AND senha_hash = :senha_hash";
+        $db = $this->conn->prepare($sql);
+        $db->bindParam(":email",$email);
+        $db->bindParam(":senha_hash",$senha_hash);
+        $db->execute();
+        $usuario = $db->fetchAll(PDO::FETCH_ASSOC);
+        if($usuario){
+            $_SESSION["id_usuario"] = $usuario[0]["id"];
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 
     
 }
