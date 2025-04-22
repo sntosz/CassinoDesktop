@@ -186,33 +186,16 @@ export function Transactions() {
 
           {/* Balance Section - Right Column */}
           <div className="col-span-4">
-            <div className="bg-[#1D1F2C] rounded-lg p-6 sticky top-6">
-              <div className="flex items-center gap-2 mb-2">
-                <CircleDollarSign className="text-yellow-500" size={24} />
-                <h2 className="text-xl font-semibold text-white">Seu Saldo</h2>
+            <div className="bg-[#1D1F2C] rounded-lg border border-gray-800 p-4">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-lg font-semibold text-white">Saldo</h2>
+                <span className="font-bold text-white">R$0,01</span>
               </div>
-              <p className="text-sm text-gray-400 mb-2">Gerencie seus fundos</p>
-              <div className="mb-4">
-                <h3 className="text-4xl font-bold text-yellow-500">
-                  R$ {balance.toFixed(2)}
-                </h3>
-                <p className="text-sm text-gray-400 mt-1">
-                  Atualizado há 2 minutos
-                </p>
-              </div>
-              <div className="grid grid-cols-1 gap-4">
-                <Button
-                  variant="default"
-                  className="bg-emerald-600 hover:bg-emerald-700"
-                >
-                  Depositar
-                </Button>
-                <Button
-                  variant="default"
-                  className="bg-yellow-500 hover:bg-yellow-600"
-                >
-                  Sacar
-                </Button>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-400">Saque disponível</span>
+                  <span className="text-white">R$0,01</span>
+                </div>
               </div>
             </div>
           </div>

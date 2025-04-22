@@ -24,7 +24,7 @@ import { CircleDollarSign, CircleUserRound, Gamepad2, LogOut, Settings } from "l
   export function Sidebar() {
     return (
             <Card 
-                className=" fixed h-screen top-0 left-0 bottom-0 border border-solid border-border border-r-[#45474F] border-t-[#07080D] border-b-[#07080D] border-l-[#07080D] bg-gradient-to-b from-[#07080D] to-[#1D1F2C] w-full max-w-[20rem] shadow-xl shadow-blue-gray-900/5"
+                className="fixed h-screen top-0 left-0 bottom-0 border border-solid border-border border-r-[#45474F] border-t-[#07080D] border-b-[#07080D] border-l-[#07080D] bg-gradient-to-b from-[#07080D] to-[#1D1F2C] w-full max-w-[20rem] shadow-xl shadow-blue-gray-900/5"
                 placeholder=""
                 onPointerEnterCapture={() => {}}
                 onPointerLeaveCapture={() => {}}
@@ -87,20 +87,22 @@ import { CircleDollarSign, CircleUserRound, Gamepad2, LogOut, Settings } from "l
                             Perfil
                         </ListItem>
                     </Link>
-                    <ListItem
-                        className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"  
-                        placeholder=""
-                        onPointerEnterCapture={() => {}}
-                        onPointerLeaveCapture={() => {}}>
-                        <ListItemPrefix 
+                    <Link to={"/configuraçoes"} className="no-underline">
+                        <ListItem
+                            className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"  
                             placeholder=""
                             onPointerEnterCapture={() => {}}
-                            onPointerLeaveCapture={() => {}}
-                        >
-                            <Settings className="h-6 w-6" />
-                        </ListItemPrefix>
-                        Configurações
-                    </ListItem>
+                            onPointerLeaveCapture={() => {}}>
+                            <ListItemPrefix 
+                                placeholder=""
+                                onPointerEnterCapture={() => {}}
+                                onPointerLeaveCapture={() => {}}
+                            >
+                                <Settings className="h-6 w-6" />
+                            </ListItemPrefix>
+                            Configurações
+                        </ListItem>
+                    </Link>
                     <Link to={'/'} className="no-underline">
                         <ListItem 
                             className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"
@@ -116,6 +118,23 @@ import { CircleDollarSign, CircleUserRound, Gamepad2, LogOut, Settings } from "l
                                 <LogOut className="h-6 w-6" />
                             </ListItemPrefix>
                             Sair
+                        </ListItem>
+                    </Link>
+                    <Link to={'/Sobre Nós'} className="no-underline">
+                        <ListItem 
+                            className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"
+                            placeholder=""
+                            onPointerEnterCapture={() => {}}
+                            onPointerLeaveCapture={() => {}}
+                            >
+                            <ListItemPrefix 
+                                placeholder=""
+                                onPointerEnterCapture={() => {}}
+                                onPointerLeaveCapture={() => {}}
+                            >
+                                <LogOut className="h-6 w-6" />
+                            </ListItemPrefix>
+                            Sobre Nós
                         </ListItem>
                     </Link>
                 </List>
