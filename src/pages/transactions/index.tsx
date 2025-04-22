@@ -111,12 +111,12 @@ export function Transactions(){
             <div className="bg-[#1D1F2C] rounded-lg border border-gray-800 p-4">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-semibold text-white">Saldo</h2>
-                <span className="font-bold text-white">R$0,02</span>
+                <span className="font-bold text-white">R$0,01</span>
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Saque disponível</span>
-                  <span className="text-white">R$0,02</span>
+                  <span className="text-white">R$0,01</span>
                 </div>
               </div>
               <button className="mt-4 w-full flex items-center justify-center gap-2 text-sm text-white hover:text-black rounded-sm bg-[#435d7a]">
