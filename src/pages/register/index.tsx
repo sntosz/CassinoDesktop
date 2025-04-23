@@ -40,45 +40,37 @@ export function Register() {
     setEmailError("");
     setFieldErrors({});
 
-    // Objeto para armazenar os erros de validação
     const errors: { [key: string]: string } = {};
 
-    // Verifica se os campos estão vazios
     if (!nome) errors.nome = "Esse campo é obrigatório";
     if (!email) errors.email = "Esse campo é obrigatório";
     if (!cpf) errors.cpf = "Esse campo é obrigatório";
     if (!dataNascimento) errors.dataNascimento = "Esse campo é obrigatório";
     if (!senha) errors.senha = "Esse campo é obrigatório";
 
-    // Se houver erros, atualiza o estado e interrompe o envio
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       return;
     }
 
-    // Validação da idade
     if (!validateAge(dataNascimento)) {
       setError("Você deve ter pelo menos 18 anos para criar uma conta.");
       return;
     }
 
     const resultado = await Cadastro(nome, email, cpf, dataNascimento, senha);
-    // const verificarCpf = await VerificarCpf(cpf);
-    // console.log(resultado);
-    // if(verificarCpf.status === 400) {
-    //   alert("Esse CPF já está cadastrado.");
-    // }
-
     if (resultado.status === 200) {
       setShowDialog(true);
+    } else if (resultado.status === 500) {
+      setEmailError("Email já cadastrado");
     } else {
-      alert("Erro ao cadastrar. Tente novamente.");
+      setError("Erro ao cadastrar. Tente novamente.");
     }
   }
 
-  // Função para limpar os erros ao preencher os campos
   const handleInputChange = (field: string, value: string) => {
     setFieldErrors((prev) => ({ ...prev, [field]: "" }));
+    setEmailError(""); 
     switch (field) {
       case "nome":
         setNome(value);
@@ -192,7 +184,7 @@ export function Register() {
               </div>
               <div className="relative">
                 <Input
-                  name="data_Nascimento"
+                  name="data_nascimento"
                   value={dataNascimento}
                   onChange={(e) => handleInputChange("dataNascimento", e.target.value)}
                   type="date"
