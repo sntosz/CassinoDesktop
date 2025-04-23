@@ -14,33 +14,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nome = $valores["nome"];
             $email = $valores["email"];
             $cpf = $valores["cpf"];
-            $data_nascimento = $valores["data_Nascimento"];
+            $data_nascimento = $valores["data_nascimento"];
             $senha = $valores["senha"];
 
             $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-            $resposta = $userController->CriarUsuario($nome, $email, $cpf, $data_nascimento, $senha_hash);
-
-            if ($resposta) {
-                echo json_encode(array("status" => 200, "message" => "Usuário cadastrado com sucesso!"));
+            $verificarEmail = $userController->BuscarEmail($email);
+            if ($verificarEmail) {
+                echo json_encode(array("status" => 500, "message" => "Email já cadastrado!"));
             } else {
-                echo json_encode(array("status" => 400, "message" => "Erro ao cadastrar usuário!"));
+                $resposta = $userController->CriarUsuario($nome, $email, $cpf, $data_nascimento, $senha_hash);
+                if ($resposta) {
+                    echo json_encode(array("status" => 200, "message" => "Usuário cadastrado com sucesso!"));
+                } else {
+                    echo json_encode(array("status" => 400, "message" => "Erro ao cadastrar usuário!"));
+                }
             }
-            break;
-        case 'validarLogin':
-            $valores = json_decode(file_get_contents("php://input"), true);
-            $email = $valores["email"];
-            $senha = $valores["senha"];
-
-            $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-            $resultado = $userController->ValidaLogin($email, $senha);
-
-            if($resultado){
-                echo json_encode(array("status" => 200, "message" => "Login realizado com sucesso!"));
-            }else{
-                echo json_encode(array("status" => 400, "message" => "Erro ao realizar login!"));
-            }
-
             break;
         
         default:

@@ -24,18 +24,15 @@ export function Login() {
     }
   };
 
-  // Handle form submission
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFieldErrors({});
 
     const errors: { [key: string]: string } = {};
 
-    // Validate fields
     if (!email) errors.email = "Esse campo é obrigatório";
     if (!senha) errors.senha = "Esse campo é obrigatório";
 
-    // If there are errors, update state and stop submission
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       return;

@@ -15,7 +15,7 @@ class UserController{
 
     public function BuscarEmail($email){
         try {
-            $sql = "SELECT :email FROM usuarios;";
+            $sql = "SELECT email FROM usuarios WHERE email = :email";
             $db = $this->conn->prepare($sql);
             $db->bindParam(":email", $email);
             $db->execute();
