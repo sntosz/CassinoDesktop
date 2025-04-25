@@ -6,14 +6,14 @@ import { cn } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
 
 const buttonVariants = cva(
-  ' w-full items-center border-none justify-center rounded-md text-sm text-black transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
+  ' w-full items-center border-none cursor-pointer justify-center rounded-md text-lg text-black transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
   {
     variants: {
       variant: {
         default:
           'bg-yellow-500 text-primary-foreground shadow hover:bg-yellow-600',
         destructive:
-          'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
+          'bg-background border-border border-yellow-500 text-white shadow-sm',
         outline:
           ' bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
         outlineSecondary:
