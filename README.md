@@ -1,4 +1,4 @@
-# cassinoDesktop
+# Cassino Desktop
 
 ## 🛫 Clonar o projeto
 
