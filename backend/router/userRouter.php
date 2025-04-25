@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data_nascimento = $valores["data_nascimento"];
             $senha = $valores["senha"];
 
-            $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+            $senha_hash = hash("sha256", $senha);
 
             $verificarEmail = $userController->BuscarEmail($email);
             if ($verificarEmail) {

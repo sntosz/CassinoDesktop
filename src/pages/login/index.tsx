@@ -38,17 +38,15 @@ export function Login() {
       return;
     }
 
-    try {
       const resultado = await LoginVerificar(email, senha);
       if (resultado.status === 200) {
+        // alert("Logado com sucesso!")
         window.location.href = "/home";
       } else {
         alert("Erro ao Logar. Tente novamente.");
       }
-    } catch (error) {
-      alert("Erro ao Logar. Tente novamente.");
-    }
-  }
+    } 
+  
 
   return (
     <>
