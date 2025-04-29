@@ -120,23 +120,6 @@ import { CircleDollarSign, CircleUserRound, Gamepad2, LogOut, Settings } from "l
                             Sair
                         </ListItem>
                     </Link>
-                    <Link to={'/Sobre Nós'} className="no-underline">
-                        <ListItem 
-                            className="flex items-center cursor-pointer hover:bg-gray-900 text-gray-400 hover:text-white text-lg font-medium transition-colors p-4 px-6 gap-4"
-                            placeholder=""
-                            onPointerEnterCapture={() => {}}
-                            onPointerLeaveCapture={() => {}}
-                            >
-                            <ListItemPrefix 
-                                placeholder=""
-                                onPointerEnterCapture={() => {}}
-                                onPointerLeaveCapture={() => {}}
-                            >
-                                <LogOut className="h-6 w-6" />
-                            </ListItemPrefix>
-                            Sobre Nós
-                        </ListItem>
-                    </Link>
                 </List>
             </Card>
     );

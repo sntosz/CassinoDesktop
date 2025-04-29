@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { CircleDollarSign } from "lucide-react";
+import { Heading } from "@/components/ui/heading";
 
 interface Transaction {
   id: string;
@@ -76,15 +77,17 @@ export function Transactions() {
   ];
 
   const tabs = ["Todos", "Depósitos", "Saques", "Histórico de Jogadas"];
+  
 
   return (
     <LayoutHome>
+      <Heading className="mb-10" >Saldo e Transações</Heading>
       <div className="max-h-screen">
         <div className="grid grid-cols-12 gap-6">
           {/* Transaction History - Left Column */}
           <div className="col-span-8">
             <div className="bg-[#1D1F2C] rounded-lg p-6">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex justify-between items-center">
                 <h2 className="text-xl font-semibold text-white">
                   Histórico de Transações
                 </h2>
@@ -191,10 +194,14 @@ export function Transactions() {
                 <h2 className="text-lg font-semibold text-white">Saldo</h2>
                 <span className="font-bold text-white">R$0,01</span>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Saque disponível</span>
                   <span className="text-white">R$0,01</span>
+                </div>
+                <div className="space-y-2">
+                  <Button>Sacar</Button>
+                  <Button className="bg-green-600">Depositar</Button>
                 </div>
               </div>
             </div>
