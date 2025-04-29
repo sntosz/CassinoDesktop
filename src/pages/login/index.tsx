@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom"; // Ensure react-router-dom is used
+import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Heading } from "@/components/ui/heading";
 import { Lock, Mail } from "lucide-react";
@@ -10,10 +10,12 @@ export function Login() {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({});
+  const [authError, setAuthError] = useState<string>("");
 
   // Handle input changes and clear corresponding errors
   const InputChange = (field: string, value: string) => {
     setFieldErrors((prev) => ({ ...prev, [field]: "" }));
+    setAuthError(""); // Clear auth error when user starts typing
     switch (field) {
       case "email":
         setEmail(value);
@@ -27,6 +29,7 @@ export function Login() {
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFieldErrors({});
+    setAuthError("");
 
     const errors: { [key: string]: string } = {};
 
@@ -38,15 +41,17 @@ export function Login() {
       return;
     }
 
-      const resultado = await LoginVerificar(email, senha);
-      if (resultado.status === 200) {
-        // alert("Logado com sucesso!")
-        window.location.href = "/home";
-      } else {
-        alert("Erro ao Logar. Tente novamente.");
-      }
-    } 
-  
+    const resultado = await LoginVerificar(email, senha);
+    if (resultado.status === 200) {
+      window.location.href = "/home";
+    } else {
+      setFieldErrors({
+        email: "error",
+        senha: "error",
+      });
+      setAuthError("Email ou senha inválidos");
+    }
+  }
 
   return (
     <>
@@ -88,8 +93,8 @@ export function Login() {
             <Heading className="flex w-full font-bold text-white animate-fadeUp">
               Entrar
             </Heading>
-            <form onSubmit={submit} className="flex flex-col gap-6 w-96">
-              <div className="relative">
+            <form onSubmit={submit} className="flex flex-col gap-5 w-96">
+              <div className="flex flex-col">
                 <Input
                   name="email"
                   value={email}
@@ -101,12 +106,12 @@ export function Login() {
                   className={`w-full ${fieldErrors.email ? "border-red-500" : ""}`}
                 />
                 {fieldErrors.email && (
-                  <label className="absolute text-red-500 text-sm mt-1">
-                    {fieldErrors.email}
+                  <label className="text-red-500 text-sm mt-1">
+                    {authError || fieldErrors.email}
                   </label>
                 )}
               </div>
-              <div className="relative">
+              <div className="flex flex-col">
                 <Input
                   name="senha"
                   value={senha}
@@ -118,13 +123,13 @@ export function Login() {
                   className={`w-full ${fieldErrors.senha ? "border-red-500" : ""}`}
                 />
                 {fieldErrors.senha && (
-                  <label className="absolute text-red-500 text-sm mt-1">
-                    {fieldErrors.senha}
+                  <label className="text-red-500 text-sm mt-1">
+                    {authError || fieldErrors.senha}
                   </label>
                 )}
               </div>
               <div className="flex flex-col gap-2 items-center">
-                <Button type="submit" className="text-lg h-12 w-full text-black">
+                <Button type="submit" className="text-lg h-12 mt-2 w-full text-black">
                   Entrar
                 </Button>
                 <p className="text-gray-400">

@@ -99,27 +99,5 @@
 --     FOREIGN KEY (id_aposta) REFERENCES apostas(id_aposta) ON DELETE CASCADE
 -- );
 
--- -- Tabela tentativas_login
--- CREATE TABLE tentativas_login (
---     id_tentativa INT AUTO_INCREMENT PRIMARY KEY,
---     id_usuario INT,
---     endereco_ip VARCHAR(45) NOT NULL,
---     sucesso BOOLEAN NOT NULL,
---     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE SET NULL
--- );
 
--- -- Tabela alertas_fraude
--- CREATE TABLE alertas_fraude (
---     id_alerta INT AUTO_INCREMENT PRIMARY KEY,
---     id_usuario INT NOT NULL,
---     tipo_alerta VARCHAR(50) NOT NULL,
---     detalhes TEXT,
---     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
--- );
 
--- -- Índices para melhorar desempenho
--- CREATE INDEX idx_usuarios_email ON usuarios(email);
--- CREATE INDEX idx_apostas_id_usuario ON apostas(id_usuario);
--- CREATE INDEX idx_transacoes_id_conta ON transacoes(id_conta);

@@ -11,7 +11,7 @@ export interface CardGameProps{
 
 export function CardGame({ image, titulo, subtitulo,  descricao }: CardGameProps){
     return(
-        <Card className="flex h-auto border border-solid border-border border-[#45474F] flex-col items-center justify-center p-6">
+        <Card enableHoverEffect={true} className="flex h-auto border border-solid border-border border-[#45474F] flex-col items-center justify-center p-6">
             <CardHeader className="text-lg font-medium font-sans  text-yellow-500">
                 <div className="w-56 rounded">
                     <img className="w-full rounded h-32 " src={image} alt="" />
