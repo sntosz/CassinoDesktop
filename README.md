@@ -49,7 +49,7 @@ A aplicação é estruturada em três partes principais:
 
 ```sh
 # clone o projeto
-git clone https://github.com/bruna9165/cassino.git
+git clone [https://github.com/bruna9165/cassino.git](https://github.com/sntosz/CassinoDesktop.git)
 
 # entre no diretório do projeto
 cd cassino
