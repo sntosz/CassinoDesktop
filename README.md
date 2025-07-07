@@ -20,8 +20,8 @@ A aplicação é estruturada em três partes principais:
     *   Responsável pela lógica de negócios, incluindo:
         *   Autenticação de usuário (registro e login).
         *   Gerenciamento de dados do usuário.
-        *   Potencialmente lidando com lógica de jogo e transações financeiras (detalhes a serem confirmados a partir de uma exploração mais aprofundada do código).
-    *   Interage com um banco de dados SQL (esquema provavelmente definido em `backend/db/database.sql`).
+        *   Potencialmente lidando com lógica de jogo e transações financeiras 
+    *   Interage com um banco de dados SQL
     *   Expõe endpoints de API que o frontend consome.
 
 3.  **Wrapper da Aplicação Desktop:**
@@ -40,7 +40,7 @@ A aplicação é estruturada em três partes principais:
 
 *   **Frontend:** React, Vite, TypeScript, Tailwind CSS
 *   **Backend:** PHP
-*   **Banco de Dados:** SQL (tipo específico como MySQL/PostgreSQL a ser confirmado por `database.sql`)
+*   **Banco de Dados:** SQL 
 *   **Framework Desktop:** Electron
 *   **Ferramenta de Build / Bundler:** Vite
 *   **Gerenciador de Pacotes:** npm
